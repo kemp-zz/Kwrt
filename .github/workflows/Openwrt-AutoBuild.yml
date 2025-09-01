@@ -6,10 +6,24 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build OpenWrt
 
-on: 
-  repository_dispatch:
+ 
+
+name: Build OpenWrt
+on:
+  workflow_dispatch:        
+    inputs:
+      target:
+        description: '编译目标设备名'
+        required: true
+        default: 'qualcommax_ipq807x'
+  push:                     
+    branches:
+      - main
+      - master
+  repository_dispatch:     
+
+
 
 env:
   REPO_TOKEN: ${{ secrets.TOKEN_KIDDIN9 }}
